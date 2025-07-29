@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpenseMate signup</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+
+<body>
+    <div class="signup">
+        <h2>Welcome to ExpenseMate</h2>
+        <div class="inputform">
+            <h2>Create your account</h2>
+            <form id="signupForm" method="POST" action="/signup" onsubmit="return validation()">
+                <input type="text" placeholder="Full Name" name="name" id="name" required>
+                <input type="email" placeholder="Email" name="email" id="email1" required>
+                <input type="password" placeholder="Password" name="password" id="password" required>
+                <input type="password" placeholder="Confirm Password" id="cpassword" required>
+                <button type="submit" id="SignUp">SignUp</button>
+            </form>
+
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </div>
+    <script>
+        function validation() {
+            const pp = document.getElementById("password").value;
+            const cp = document.getElementById("cpassword").value;
+            const em = document.getElementById("email1").value;
+            let a = em.lastIndexOf('@');
+            let b = em.lastIndexOf('.');
+
+            if (!(a != -1 && b != -1) && (b > (a + 1))) {
+                alert("Please Enter a valid email");
+                return false;
+            }
+            if (cp === pp) {
+                return true;
+            }
+            else {
+                alert("Password and confirm password must be same");
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
